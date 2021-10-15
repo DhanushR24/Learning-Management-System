@@ -1,0 +1,25 @@
+<%- include('partials/header'); -%>
+
+<%- include('partials/nav') %> 
+
+    <div class="create-task content">
+        <form action="/tasks" method="POST">
+            <label for="title">Title<span style="color: lightcoral;">*</span></label>
+            <input type="text" name="title" id="title" required>
+            
+            <label for="body">Description<span style="color: lightcoral;">*</span></label>
+            <textarea name="body" id="body" cols="35" rows="10" required style="resize: none;text-align: left;font-size: large;"></textarea>
+
+            <div class="input">
+                <label for="completed">Completed?</label>
+                <input type="checkbox" name="completed" id="" style="margin-bottom: 0;">
+            </div>
+            
+            <label for="deadline">Deadline<span style="color: lightcoral;">*</span></label>
+            <input type="date" name="deadline" id="" required>
+            <input type="text" value="<%= user._id %>" name="user" style="display: none;">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+<%- include('partials/footer'); -%>

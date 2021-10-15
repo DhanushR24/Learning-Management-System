@@ -1,0 +1,115 @@
+<%- include('partials/header'); -%>
+
+<h1 style="font-size: 40px;">
+    Web Dev <i class="fas fa-code"></i>
+</h1>
+<div class="container">
+    <div class="ele">
+        <img src="images/WebDev/webDev.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 1: Basic Frontend</h3>
+            <p>Learn the basics of HTML CSS JS</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+    <div class="ele">
+        <img src="images/WebDev/reactJS.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 2: Advanced Frontend</h3>
+            <p>ReactJS</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+    <div class="ele">
+        <img src="images/WebDev/nextJS.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 3: Backend</h3>
+            <p>Design backend with NodeJS & NextJS</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 style="font-size: 40px;">
+    App Dev <i class="fas fa-mobile-alt"></i>
+</h1>
+<div class="container">
+    <div class="ele">
+        <img src="images/MobileDev/mobileDev.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 1: Basic App Developement</h3>
+            <p>Java</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+    <div class="ele">
+        <img src="images/MobileDev//flutter.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 2: Advanced App Developement</h3>
+            <p>Flutter</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+    <div class="ele">
+        <img src="images/MobileDev/mobileUI.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 3: Mobile UI</h3>
+            <p>Improve User Interface</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+</div>
+<h1 style="font-size: 40px;">
+    Hacking <i class="fas fa-hat-cowboy-side"></i>
+</h1>
+<div class="container">
+    <div class="ele">
+        <img src="images/Hacking/Hacking.svg" alt="">
+        <div class="text-container">
+            <h3>Lesson 1: Hacking</h3>
+            <p>Dive in into the world of ethical hacking</p>
+            <div class="input">
+                <p>Completed</p> <input type="checkbox" name="Completed" id="">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="overlay"></div>
+<iframe id="youtube" width="600" class="" height="350" src="https://www.youtube.com/embed/pQN-pnXPaVg"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+
+<script>
+    const overlay = document.querySelector("#overlay");
+    const youtube = document.querySelector("#youtube");
+    const courses = document.querySelectorAll(".ele img, .ele h3");
+
+    courses.forEach(course => {
+        course.addEventListener('click', (e) => {
+            youtube.style.display = 'block';
+            overlay.style.display = 'block';
+        })
+    })
+    overlay.addEventListener('click', (e) => {
+
+        youtube.style.display = 'none';
+        overlay.style.display = 'none';
+    })
+</script>
+
+
+
+<%- include('partials/footer'); -%>

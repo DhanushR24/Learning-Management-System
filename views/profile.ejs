@@ -1,0 +1,60 @@
+<%- include('partials/header'); -%>
+<div class="profile-container">
+    <div class="img">
+        <img src="images/profile.svg" alt="" width="500px" height="500px">
+    </div>
+    <form action="" class="profile">
+        <h2>Profile</h2>
+        <img src="images/profilePic.svg" alt="" width="200px" height="200px">
+        <div class="ele">
+            <h3>Email</h3>
+            <input type="text" name="email" value="<%= user.email %>" readonly style="cursor: not-allowed;">
+        </div>
+        <div class="ele">
+            <h3>UserName</h3>
+            <input type="text" name="userName" value="<%= user.userName %>" required>
+        </div>
+        <div class="ele">
+            <h3>Name</h3>
+            <input type="text" name='name' value="<%= user.name %>" required>
+        </div>
+        <div class="ele">
+            <h3>Phone</h3>
+            <input type="text" name="phone" value="<%= user.phone %>" required>
+        </div>
+        <input type="text" name="id" value="<%= user._id %>" style="display: none;">
+        <input type="submit" value="Update">
+    </form>
+</div>
+
+<script>
+    const form = document.querySelector('form')
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+
+        const userName = form.userName.value;
+        const name = form.name.value;
+        const phone = form.phone.value;
+        const id = form.id.value;
+        
+        fetch(`/profile/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    id,
+                    userName,
+                    name,
+                    phone
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        .then(res=> res.json())
+        .then((data)=> {
+            window.location.href = data.redirect;
+        })
+    })
+</script>
+
+<%- include('partials/footer'); -%>

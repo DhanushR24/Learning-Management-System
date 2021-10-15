@@ -1,0 +1,46 @@
+<%- include('partials/header'); -%>
+
+<header>
+  <div class="Image">
+    <img src="images/Intro/read.svg" alt="">
+  </div>
+  <% if (user) { %>
+  <div class="headings">
+    <h2 style="color: #6C63FF;">Hey <%= user.name.split(' ')[0] %> </h2>
+    <h3 style="color: white;background-color: #6C63FF;text-transform: uppercase;">Welcome to LMS</h3>
+    <p>Your own personal Learning<br>Management System</p>
+  </div>
+  <% } else { %>
+    <div class="headings">
+      <h2 style="color: #6C63FF;">Hey there </h2>
+      <h3 style="color: white;background-color: #6C63FF;text-transform: uppercase;">Welcome to LMS</h3>
+      <p>Your own personal Learning<br>Management System</p>
+    </div>
+  <% } %>
+</header>
+<h1 style="font-size: 50px;">Features</h1>
+<div class="container">
+  <div class="ele">
+    <img src="images/Intro/knowledge.svg" alt="">
+    <div class="text-container">
+      <h2>knowledge</h2>
+      <p>Get all the knowledge you need</p>
+    </div>
+  </div>
+  <div class="ele">
+    <img src="images/Intro/Notes.svg" alt="">
+    <div class="text-container">
+      <h2>Notes</h2>
+      <p>Keep all your notes in one place</p>
+    </div>
+  </div>
+  <div class="ele">
+    <img src="images/Intro/learn.svg" alt="">
+    <div class="text-container">
+      <h2>Learn</h2>
+      <p>Learn anytime from manywhere</p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer'); -%>

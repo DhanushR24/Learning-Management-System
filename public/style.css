@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    color: #444444;
+}
+
+*::selection {
+    color: white;
+    background-color: #6C63FF;
+}
+
+body {
+    margin: 15px 30px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background: #fafafa;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2em;
+
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav li a:hover {
+    color: #6C63FF;
+}
+
+nav li a {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8em;
+    display: block;
+    padding: 10px 16px;
+    letter-spacing: 2px;
+}
+
+i {
+    color: white;
+}
+
+.btn {
+    border-radius: 20px;
+    border: 3px solid #6C63FF;
+}
+
+.btn:hover {
+    background-color: #6C63FF;
+    color: white;
+
+}
+.sign-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.sign-container img {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+form h2 {
+    font-size: 2.4em;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 2em;
+    box-shadow: 1px 2px 3px #6C63FF;
+    border-radius: 10px;
+    background: white;
+
+}
+
+form label{
+    text-align: left;
+    font-weight: 600;
+}
+
+form h2 {
+    color: #6C63FF;
+}
+
+
+
+form input {
+    text-align: left;
+    color: #000;
+}
+form input[type="submit"] {
+    text-align: center;
+}
+form input[type="submit"]:hover {
+    color: white;
+    background-color: #6C63FF;
+}
+
+input {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #dddddd;
+    font-size: 1em;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin: 20px 10px;
+}
+
+button {
+    margin-top: 30px;
+    border-radius: 36px;
+    background: #6C63FF;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8em;
+    display: block;
+    padding: 10px 16px;
+    letter-spacing: 2px;
+}
+
+.current-page {
+    color: #6C63FF;
+    border-bottom: 2px solid #6C63FF;
+}
+
+.error {
+    color: #ff3333;
+    margin: 10px 2px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 8em 0;
+}
+
+header img {
+    width: 400px;
+    margin-right: 40px;
+}
+
+header h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    color: #999999;
+}
+
+header .btn {
+    margin-top: 20px;
+    padding: 12px 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 0.8em;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+
+    justify-content: space-evenly;
+
+    margin-bottom: 5em;
+}
+
+.container img {
+    width: 250px;
+    height: 250px;
+}
+
+.container .ele {
+    padding: 1em;
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.text-container {
+    width: 100%;
+}
+
+.text-container * {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.container .ele:hover {
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 2px 2px 3px #6C63FF;
+}
+
+.container .ele img:hover {
+    transform: scale(1.1);
+}
+
+.all-courses {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input p {
+    width: 110px;
+    color: #6C63FF;
+}
+
+.input input {
+    width: 20px;
+    height: 20px;
+    accent-color: #6c63ff;
+}
+
+footer {
+    text-align: center;
+    background: #ffffffa0;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+}
+
+footer * {
+    color: #6C63FF;
+}
+
+#youtube {
+    z-index: 2;
+    display: none;
+    position: fixed;
+    top: calc(50% - 175px);
+    left: calc(50% - 300px)
+}
+
+#overlay {
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0000008f;
+
+    display: none;
+}
+
+.active {
+    display: block;
+    color: #6C63FF;
+}
+
+.create-task form {
+    max-width: 600px;
+    margin: 1em auto;
+}
+
+.create-task input,
+.create-task textarea {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+}
+
+.create-task label {
+    display: block;
+    margin-top: 1em;
+    margin-left: 0;
+    margin-bottom: 0em;
+    text-align: left;
+}
+
+textarea {
+    height: 120px;
+}
+
+.create-task input[type="submit"] {
+    margin-top: 20px;
+    background: #6C63FF;
+    color: white;
+    padding: 6px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.container.nav {
+    margin-bottom: 1em;
+}
+
+.container ul {
+    margin: 0 auto;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container ul li a {
+    color: #6C63FF;
+}
+.container ul li a:hover {
+    color: white;
+    background-color: #6C63FF;
+}
+
+.tasks {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em;
+}
+.tasks * {
+    text-align: left;
+}
+
+.tasks .single {
+    padding-left: 1em;
+    padding: 1.5em 1em;
+    margin: 2em 0;
+    border-left: 5px solid #6C63FF;
+    
+    box-shadow: 1px 1px 3px #6C63FF;
+    background: white;
+
+    display: flex;
+    justify-content: space-between;
+}
+.single .single-link {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+
+    cursor: pointer;
+}
+.single .delete .link:hover {
+    cursor: pointer;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-container .img {
+    width: 40%;
+}
+.profile-container .profile {
+    width: 60%;
+    max-width: 600px;
+}
+.profile-container .profile .ele {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 0.5em 0.25em;
+}
+.profile-container .profile .ele h3 {
+    width: 30%;
+    text-align: left;
+}
+.profile-container .profile .ele input {
+    width: 50%;
+}
+.profile-container .profile input {
+    margin-top: 0.5em;
+    width: 100px;
+}
+
+@media (max-width: 1200px) {
+    .profile-container {
+        flex-direction: column;
+    }
+    .profile-container .img img{
+        
+        width: 400px;
+        height: 400px;
+    }
+    .profile-container .profile {
+        width: 80%;
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 1000px) {
+    nav li a {
+        padding: 8px 10px;
+        letter-spacing: 2px;
+    }
+    .title {
+        display: none;
+    }
+    header img {
+        width: 400px;
+    }
+    .sign-container img {
+        display: none;
+    }
+
+    .container {
+
+        flex-direction: column;
+    }
+
+    .container img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .container .ele {
+        width: 100%;
+
+        padding: 0.25em;
+        flex-direction: row;
+    }
+
+    .container .ele .text-container {
+        padding-left: 0.75em;
+        text-align: left;
+        width: 40%;
+    }
+
+    .container .ele .text-container * {
+        text-align: left;
+    }
+
+    .container ul {
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tasks {
+        width: 90%;
+        padding: 1em;
+    }
+    
+    .tasks .single {
+        padding-left: 0.5em;
+        margin: 0.5em 0;
+    }
+    .single .single-link {
+        padding-left: 0.75em;
+    }
+    .profile-container {
+        flex-direction: column;
+    }
+    .profile-container .img img{
+        
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 563px) {
+    body {
+        margin: 0;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1em;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+    .title {
+        display: inline;
+    }
+
+    .container img {
+        width: 150px;
+        height: 150px;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    header img {
+        width: 300px;
+        margin-right: 0;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .tasks {
+        width:  100%;
+        padding: 0.5em;
+    }
+
+    .tasks .single {
+        padding-left: 0.25em;
+    }
+
+    .single + p {
+        width: 100%;
+        font-size: 16px;
+    }
+    .profile-container {
+        flex-direction: column;
+    }
+    .profile-container .img img{
+        
+        width: 200px;
+        height: 200px;
+    }
+    
+
+    .profile-container .profile {
+        padding: 0.25em;
+    }
+
+    .profile-container .profile {
+        width: 100%;
+    }
+    .profile-container .profile .ele input {
+        width: 60%;
+    }
+}

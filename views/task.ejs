@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+
+<%- include('partials/nav') %> 
+<div class="details content">
+    <h2><%= task.title %></h2>
+    <div class="content">
+        <p><%= task.body %> </p>
+    </div>
+    <a data-doc="<%= task._id %> " class="delete">delete</a>
+</div>
+
+<script>
+    const trashcan = document.querySelector('a.delete');
+    trashcan.addEventListener('click', (e) => {
+        const endpoint = `/task/${trashcan.dataset.doc}`;
+
+        fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then((data)=> {
+                window.location.href=data.redirect;
+            })
+            .catch((err)=> {
+                console.log(err);
+            })
+    })
+</script>
+<%- include('partials/footer'); -%>

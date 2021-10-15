@@ -1,0 +1,67 @@
+<%- include('partials/header'); -%>
+
+<%- include('partials/nav') %>
+<div class="tasks content">
+    <% if(task.length > 0) { %>
+    <% task.forEach(task => { %>
+    <div class="single">
+        <a class="single-link" data-id="<%= task._id %>">
+            <h3 class="title"><i class="fas fa-angle-right"></i> <%= task.title %> </h3>
+            <p class="body"><i class="fas fa-info-circle"></i> <%= task.body %> </p>
+            <% if(task.completed) { %>
+            <p style="color:lightgreen"><i class="fas fa-check-circle"></i> Completed</p>
+            <% } else { %>
+            <p style="color:lightcoral"><i class="fas fa-times-circle"></i> Not Completed</p>
+            <% } %>
+            <p><i class="far fa-calendar-times"></i> <%= task.deadline %> </p>
+        </a>
+        <div class="delete">
+            <a class="link" data-id="<%= task._id %>"><i class="fas fa-trash-alt"></i></a>
+        </div>
+    </div>
+    <% }) %>
+    <p style="color: #ccc;text-align: center;">Click on the task to toggle(update) the status</p>
+    <% } else { %>
+        <p style="text-align: center;">Create a task to get started</p>
+        <img src="images/Notes.png" alt="" width="500px" height="500px">
+    <% } %>
+</div>
+<script>
+    const del = document.querySelector('.single .delete .link');
+    const update = document.querySelector('.single .single-link');
+
+    try {
+
+        update.addEventListener('click', (e)=> {
+            const url = `/tasks/${update.dataset.id}`;
+    
+            fetch(url, {
+                method: 'PUT'
+            })
+            .then(res=> res.json())
+            .then((data)=> {
+                window.location.href = data.redirect;
+            })
+            .catch((err)=> {
+                console.log(err);
+            })
+        })
+        del.addEventListener('click', (e) => {
+            const url = `/tasks/${del.dataset.id}`;
+            fetch(url, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then((data) => {
+                    window.location.href = data.redirect;
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        })
+    }
+    catch(err) {
+        // console.log("No task has been created yet :(");
+    }
+</script>
+<%- include('partials/footer'); -%>

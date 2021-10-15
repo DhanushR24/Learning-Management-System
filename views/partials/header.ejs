@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS | <%= title %> </title>
+
+  <script src="https://kit.fontawesome.com/8fb7af360f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+  <nav>
+    <h1><a href="/"><i class="fas fa-book-open"></i> <span class="title">LMS</span></a></h1>
+
+    <ul class="nav-links">
+      <% if (user) { %>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/tasks">Tasks</a></li>
+        <li><a href="/profile"><%= user.userName %></a></li>
+        <li><a href="/logout">Log Out</a></li>
+       
+      <% } else { %>
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/signup" class="btn">Sign up</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  <script>
+    const loc = window.location.href.split('/');
+    const active = loc[loc.length-1]
+
+    if(active) {
+      document.querySelector(`nav ul li a[href="/${active}"]`).classList.add('current-page')
+    }
+  </script>
+  
