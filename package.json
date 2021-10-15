@@ -1,10 +1,13 @@
 {
   "name": "learning-management-system",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal learning management system",
   "main": "app.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node app",
+    "start": "node app.js",
     "dev": "nodemon app"
   },
   "author": "Dhanush",
