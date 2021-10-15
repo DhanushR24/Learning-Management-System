@@ -58,7 +58,8 @@ app.put('/profile/:id', (req, res) => {
     const {
         userName,
         name,
-        phone
+        phone,
+        image
     } = req.body;
 
 
@@ -67,7 +68,8 @@ app.put('/profile/:id', (req, res) => {
         }, {
             userName,
             name,
-            phone
+            phone,
+            image
         })
         .then(result => {
             res.json({
