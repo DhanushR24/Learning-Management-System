@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const port = process.env.port || 5000;
 
 const authRoutes = require('./routes/authRoutes')
 const tasksRoutes = require('./routes/tasksRoutes')
@@ -20,8 +21,7 @@ app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({
     extended: true
-}
-));
+}));
 app.use(morgan('tiny'))
 app.use(cookieParser())
 // view engine
@@ -33,7 +33,7 @@ mongoose.connect(dbURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then((result) => app.listen(5000))
+    .then((result) => app.listen(port))
     .catch((err) => console.log(err));
 
 // routes
@@ -55,16 +55,28 @@ app.get('/profile', (req, res) => {
 
 app.put('/profile/:id', (req, res) => {
     const _id = req.params.id;
-    const {userName, name, phone } = req.body;
+    const {
+        userName,
+        name,
+        phone
+    } = req.body;
 
 
-    User.findByIdAndUpdate({_id}, {userName, name, phone })
-    .then(result => {
-        res.json({redirect: '/profile'})
-    })
-    .catch((err)=> {
-        console.log("error :(")
-    })
+    User.findByIdAndUpdate({
+            _id
+        }, {
+            userName,
+            name,
+            phone
+        })
+        .then(result => {
+            res.json({
+                redirect: '/profile'
+            })
+        })
+        .catch((err) => {
+            console.log("error :(")
+        })
 })
 
 app.use(authRoutes)
