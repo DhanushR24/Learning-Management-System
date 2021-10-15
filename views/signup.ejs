@@ -1,25 +1,28 @@
 <%- include('partials/header'); -%>
-
 <div class="sign-container">
     <img src="images/signup.svg" alt="">
-    <form>
+    <form enctype="multipart/form-data">
         <h2>Sign Up</h2>
-        <label for="email">Email<span style="color: lightcoral;">*</span> <span style="color:lightslategray;font-size: 15px;">(Cannot be changed later)</span></label>
+        <label for="image">Profile photo (link)</label>
+        <input type="text" name="image" id="">
+
+        <label for="email">Email<span style="color: lightcoral;">*</span> <span
+                style="color:lightslategray;font-size: 15px;">(Cannot be changed later)</span></label>
         <input type="text" name='email' required placeholder="Ash_Ketchum01@email.com">
         <div class="password error" id="EError"></div>
-    
+
         <label for="userName">UserName<span style="color: lightcoral;">*</span></label>
         <input type="text" name='userName' placeholder="Pikachu01" required>
-    
+
         <label for="name">Name<span style="color: lightcoral;">*</span></label>
         <input type="text" name='name' placeholder="Ash Ketchum" required>
-    
+
         <label for="phone">Phone number</label>
         <input type="text" name='phone' placeholder="0000000000">
-    
+
         <label for="password">Password<span style="color: lightcoral;">*</span></label>
         <input type="password" name='password' required placeholder="******">
-    
+
         <div class="password error" id="PError"></div>
         <input type="submit" value="Sign Up">
     </form>
@@ -29,7 +32,7 @@
     const form = document.querySelector('form')
     const emailError = document.querySelector('#EError');
     const passwordError = document.querySelector('#PError');
-    form.addEventListener('submit', async (e)=> {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         emailError.textContent = '';
@@ -40,24 +43,33 @@
         const userName = form.userName.value;
         const phone = form.phone.value;
         const name = form.name.value;
-
+        const image = form.image.value;
+        
         try {
             const res = await fetch('/signup', {
                 method: 'POST',
-                body: JSON.stringify({ email, userName, name, phone, password }),
-                headers: {'Content-Type':'application/json'}
+                body: JSON.stringify({
+                    image,
+                    email,
+                    userName,
+                    name,
+                    phone,
+                    password
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
-            
+
             const data = await res.json();
-            if(data.errors) {
+            if (data.errors) {
                 emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password;
             }
-            if(data.user) {
+            if (data.user) {
                 location.assign('/');
             }
-        }
-        catch(err) {
+        } catch (err) {
             console.log(err);
         }
     })

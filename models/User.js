@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt')
 const { isEmail } = require('validator')
 
 const UserSchema = new mongoose.Schema({
+    image: {
+        type: String,
+        default: 'images/profilePic.svg'
+    },
     userName: {
         type: String
     },

@@ -56,6 +56,7 @@ module.exports.login_get = (req, res) => {
 }
 module.exports.signup_post = async (req, res) => {
     const {
+        image,
         email,
         userName,
         name,
@@ -65,6 +66,7 @@ module.exports.signup_post = async (req, res) => {
 
     try {
         const user = await User.create({
+            image,
             email,
             userName,
             name,
