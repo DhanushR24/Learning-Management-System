@@ -47,7 +47,7 @@
                 body: JSON.stringify({ email, userName, name, phone, password }),
                 headers: {'Content-Type':'application/json'}
             })
-
+            
             const data = await res.json();
             if(data.errors) {
                 emailError.textContent = data.errors.email;
