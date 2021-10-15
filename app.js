@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 const authRoutes = require('./routes/authRoutes')
 const tasksRoutes = require('./routes/tasksRoutes')
