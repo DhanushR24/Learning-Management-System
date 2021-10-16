@@ -235,8 +235,9 @@ header .btn {
     box-shadow: 2px 2px 3px #6C63FF;
 }
 
-.container .ele img:hover {
+.container .ele img:hover, .Image img:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .all-courses {
