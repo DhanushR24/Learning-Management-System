@@ -1,7 +1,8 @@
 const Task = require('../models/task');
 
 const task_index = (req, res) => {
-    Task.find({}).sort({
+    const id = req.locals.user.id;
+    Task.find({user: id}).sort({
         createdAt: -1
     })
     .then((result) => {

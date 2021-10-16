@@ -5,7 +5,7 @@
     </div>
     <form action="" class="profile">
         <h2>Profile</h2>
-        <img src="<%= user.image %>" alt="" width="200px" height="200px" style="border-radius: 50%;">
+        <img src="<%= user.image %>" onerror="this.src='images/profilePic.svg'" alt="Profile pic" width="200px" height="200px" style="border-radius: 50%;">
         <div class="ele">
             <h3>Email</h3>
             <input type="text" name="email" value="<%= user.email %>" readonly style="cursor: not-allowed;">
@@ -22,6 +22,10 @@
             <h3>Phone</h3>
             <input type="text" name="phone" value="<%= user.phone %>" required>
         </div>
+        <div class="ele">
+            <h3>Profile(<span><a href="https://www.linkpicture.com/en/index.php" style="color:lightcoral;text-decoration: underline;" target="_blank">link</a></span>)</h3>
+            <input type="text" name="image" placeholder="Profile photo link">
+        </div>
         <input type="text" name="id" value="<%= user._id %>" style="display: none;">
         <input type="submit" value="Update">
     </form>
@@ -37,6 +41,7 @@
         const name = form.name.value;
         const phone = form.phone.value;
         const id = form.id.value;
+        const image = form.image.value;
         
         fetch(`/profile/${id}`, {
                 method: 'PUT',
@@ -44,7 +49,8 @@
                     id,
                     userName,
                     name,
-                    phone
+                    phone,
+                    image
                 }),
                 headers: {
                     'Content-Type': 'application/json'
