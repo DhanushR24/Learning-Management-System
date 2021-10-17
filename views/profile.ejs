@@ -33,8 +33,35 @@
         <input type="submit" value="Update">
     </form>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    const fileUpload = document.getElementById('file');
+    const fileLabel = document.querySelector('label[for="file"]')
+    const CloudinaryUpload = 'https://api.cloudinary.com/v1_1/dnkuyotlp/upload'
+    const CloudinaryUploadPreset = 't3p8v8km'
+
+    var image;
+    fileUpload.addEventListener('change', (e)=> {
+        fileLabel.textContent = fileUpload.value.split('\\').pop();
+        var file = event.target.files[0];
+        var formData = new FormData();
+        formData.append('file', file)
+        formData.append('upload_preset', CloudinaryUploadPreset)
+        
+        axios({url: CloudinaryUpload, 
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/x-www-form-urlencoded'
+            },
+            data: formData
+        }).then((res)=> {
+            console.log(res.data.secure_url);
+            image = res.data.secure_url;
+
+        }).catch((err)=> {
+            console.log(err);
+        });
+    });
     const form = document.querySelector('form')
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -44,7 +71,6 @@
         const name = form.name.value;
         const phone = form.phone.value;
         const id = form.id.value;
-        const image = form.file.value;
         
         fetch(`/profile/${id}`, {
                 method: 'PUT',
