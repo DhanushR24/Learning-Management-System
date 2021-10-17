@@ -16,6 +16,21 @@ const {
 
 const app = express();
 
+// const path = require('path');
+// const multer = require('multer');
+
+// var Storage = multer.diskStorage({
+//     destination: '../public/uploads/',
+//     filename: (req, file, cb)=> {
+//         cb(null, file.fieldname+"_"+Date.now()+path.extname(file.originalname))
+//     }
+// })
+// var upload = multer({
+//     storage: Storage
+// });
+
+
+
 // middleware
 app.use(express.static('public'));
 app.use(express.json())
@@ -83,6 +98,13 @@ app.put('/profile/:id', (req, res) => {
 
 app.use(authRoutes)
 app.use('/tasks', tasksRoutes)
+
+// app.get('/profileImage', (req, res)=> {
+//     res.render('profileImage', {title: "Profile Image"});
+// })
+
+// app.post('/profileImage', (req, res, next)=> {})
+
 app.use((req, res) => {
     res.render('404', {
         title: 'Error'

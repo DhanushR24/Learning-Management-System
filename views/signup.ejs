@@ -3,8 +3,10 @@
     <img src="images/signup.svg" alt="">
     <form enctype="multipart/form-data">
         <h2>Sign Up</h2>
-        <label for="image">Profile photo (<span><a href="https://www.linkpicture.com/en/index.php" style="color:lightcoral;text-decoration: underline;" target="_blank">link</a></span>)</label>
-        <input type="text" name="image" id="">
+        <label for="file">
+            <i class="fas fa-user-circle"></i> Upload profile photo
+            <input type="file" name="file" id="file" accept="image/*" style="display: none;">
+        </label>
 
         <label for="email">Email<span style="color: lightcoral;">*</span> <span
                 style="color:lightslategray;font-size: 15px;">(Cannot be changed later)</span></label>
@@ -27,8 +29,36 @@
         <input type="submit" value="Sign Up">
     </form>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    const fileUpload = document.getElementById('file');
+    const fileLabel = document.querySelector('label[for="file"]')
+    const CloudinaryUpload = 'https://api.cloudinary.com/v1_1/dnkuyotlp/upload'
+    const CloudinaryUploadPreset = 't3p8v8km'
+
+    var image;
+    fileUpload.addEventListener('change', (e)=> {
+        fileLabel.textContent = fileUpload.value.split('\\').pop();
+        var file = event.target.files[0];
+        var formData = new FormData();
+        formData.append('file', file)
+        formData.append('upload_preset', CloudinaryUploadPreset)
+        
+        axios({url: CloudinaryUpload, 
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/x-www-form-urlencoded'
+            },
+            data: formData
+        }).then((res)=> {
+            console.log(res.data.secure_url);
+            image = res.data.secure_url;
+
+        }).catch((err)=> {
+            console.log(err);
+        });
+    });
+
     const form = document.querySelector('form')
     const emailError = document.querySelector('#EError');
     const passwordError = document.querySelector('#PError');
@@ -43,7 +73,7 @@
         const userName = form.userName.value;
         const phone = form.phone.value;
         const name = form.name.value;
-        const image = form.image.value;
+        // const image = form.image.value;
         
         try {
             const res = await fetch('/signup', {

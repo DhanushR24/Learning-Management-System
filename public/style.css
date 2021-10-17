@@ -63,7 +63,15 @@ nav li a {
 i {
     color: white;
 }
+label[for="file"] {
+    text-align: center;
+    margin: 0;
+    padding: 20px 10px;
 
+    background-color: #6C63FF;
+    color: white;
+
+}
 .btn {
     border-radius: 20px;
     border: 3px solid #6C63FF;
